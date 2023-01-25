@@ -1,5 +1,5 @@
 function getAllCustomer() {
-    fetch('./api/customers')
+    fetch('./customer/all')
         .then(response => {
             if (response.status === 404) {
                 alert('Error: Invalid Request ' + response.status + ' Not found');
@@ -28,7 +28,7 @@ function getCustomerById() {
         return;
     }
     console.log(id);
-    fetch('./api/customers/' + id)
+    fetch('./customer/' + id)
         .then(response => {
             if (response.status === 404) {
                 alert('Error: Invalid Request ' + response.status + ' Not found');
@@ -59,7 +59,7 @@ function addCustomer() {
 
     console.log(data);
 
-    fetch('./api/customers', {
+    fetch('./customer', {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data)
@@ -82,7 +82,7 @@ function deleteCustomer() {
         return;
     }
 
-    fetch('./api/customers/' + id, {method: "DELETE"})
+    fetch('./customer/' + id, {method: "DELETE"})
         .then(response => {
             alert(response.status + " " + response.statusText);
         })
@@ -98,7 +98,7 @@ function editCustomer() {
 
     console.log(data);
 
-    fetch('./api/customers/', {
+    fetch('./customer', {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data)
